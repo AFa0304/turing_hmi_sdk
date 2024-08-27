@@ -1,5 +1,5 @@
-import { setOrders, setRouteData, setCurrentGoal } from "../../redux/reducers/global";
-import { setUpdatePath } from "../../redux/reducers/ros";
+import { setOrders, setRouteData, setCurrentGoal } from "../../../redux/reducers/global";
+import { setUpdatePath } from "../../../redux/reducers/ros";
 import { ReduxManager } from "./index";
 
 /*

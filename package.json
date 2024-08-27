@@ -1,6 +1,6 @@
 {
     "name": "turing_hmi_sdk",
-    "version": "1.0.1",
+    "version": "1.0.4",
     "description": "turing hmi package based on React",
     "main": "index.js",
     "repository": {
@@ -11,8 +11,8 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
-        "styled-components": "^6.1.0",
-        "prop-types": "latest"
+        "prop-types": "latest",
+        "styled-components": "^6.1.0"
     },
     "author": "AFa",
     "license": "ISC"
