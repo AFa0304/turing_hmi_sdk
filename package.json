@@ -1,6 +1,6 @@
 {
     "name": "turing_hmi_sdk",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "turing hmi package based on React",
     "main": "index.js",
     "repository": {
