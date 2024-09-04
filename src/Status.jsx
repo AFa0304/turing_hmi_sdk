@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 export default function Status(props) {
-    const { autowareState, themeMode, applyDefaultStyle } = props;
+    const { autowareState, themeMode, applyDefaultStyle, locale } = props;
     const statusMap = new Map();
     const classMap = new Map();
     const classList = {
@@ -11,14 +11,30 @@ export default function Status(props) {
         green: "green-light",
         orange: "orange-light",
     };
-    // set status string map
-    statusMap.set(1, "初始化中");
-    statusMap.set(2, "等待目的地");
-    statusMap.set(3, "路徑規劃中");
-    statusMap.set(4, "等待發車");
-    statusMap.set(5, "行駛中");
-    statusMap.set(6, "抵達目的地");
-    statusMap.set(7, "系統異常");
+    const statusStrings = {
+        zh: {
+            1: "初始化中",
+            2: "等待目的地",
+            3: "路徑規劃中",
+            4: "等待發車",
+            5: "行駛中",
+            6: "抵達目的地",
+            7: "系統異常",
+        },
+        en: {
+            1: "System initializing",
+            2: "Waiting for destination",
+            3: "Planning",
+            4: "Ready to launch",
+            5: "Driving",
+            6: "Destination Arrived",
+            7: "System malfunction",
+        },
+    };
+    const currentStatusStrings = statusStrings[locale] || statusStrings.zh;
+    Object.keys(currentStatusStrings).forEach((key) => {
+        statusMap.set(Number(key), currentStatusStrings[key]);
+    });
     // set status light class name map
     classMap.set(1, classList.blue);
     classMap.set(2, classList.green);
@@ -39,12 +55,14 @@ Status.propTypes = {
     autowareState: PropTypes.number.isRequired,
     applyDefaultStyle: PropTypes.bool,
     themeMode: PropTypes.number, // 1:dark 2:light
+    locale: PropTypes.string,
 };
 
 Status.defaultProps = {
     autowareState: 0,
     applyDefaultStyle: true,
     themeMode: 1,
+    locale: "zh",
 };
 
 const StatusWrapper = styled.div`
